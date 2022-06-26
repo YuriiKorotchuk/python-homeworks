@@ -7,7 +7,6 @@
 # upper_limit = 37.339
 # > match: "my-store", "main-service"
 
-
 my_dict = {"cilpio": 47.999,
            "a_studio": 42.999,
            "momo": 49.999,
