@@ -17,6 +17,9 @@ my_dict = {"cilpio": 47.999,
            "sto": 37.720,
            "rozetka": 38.003,
            }
+
+achievements_list = []
+
 try:
     lower_limit = float(input("Введіть мінімальну ціну: "))
     upper_limit = float(input("Введіть максимальну ціну: "))
@@ -28,4 +31,8 @@ else:
     else:
         for shop, price in my_dict.items():
             if lower_limit <= price <= upper_limit:
-                print("Назвa магазину: " + shop)
+                achievements_list.append(shop)
+    if len(achievements_list) < 1:
+        print("Результатів за данною фільтрацією не знайдено!!!")
+    else:
+        print(f"Список магазинів за данною фільтрацією: {achievements_list}")
