@@ -17,7 +17,6 @@ my_dict = {"cilpio": 47.999,
            "sto": 37.720,
            "rozetka": 38.003,
            }
-
 achievements_list = []
 
 try:
@@ -26,13 +25,15 @@ try:
 except ValueError as e:
     print("Ви написали не валідне значення!!!")
 else:
-    if lower_limit > upper_limit:
+    if lower_limit < 1 or upper_limit < 1:
+        print("Мінусові значення не допустимі!!!")
+    elif lower_limit > upper_limit:
         print("Ціна нижнього ліміту не повинна бути більша чим ціна верхнього!!!")
     else:
         for shop, price in my_dict.items():
             if lower_limit <= price <= upper_limit:
                 achievements_list.append(shop)
-    if len(achievements_list) < 1:
-        print("Результатів за данною фільтрацією не знайдено!!!")
-    else:
-        print(f"Список магазинів за данною фільтрацією: {achievements_list}")
+        if len(achievements_list) < 1:
+            print("Результатів за данною фільтрацією не знайдено!!!")
+        else:
+            print(f"Список магазинів за данною фільтрацією: {achievements_list}")
