@@ -19,7 +19,6 @@ from termcolor import colored
 from tqdm import tqdm
 import time
 
-viewer_year = input(colored("Скільки вам років??? ", 'green', attrs=['blink']))
 
 
 def year_parameterize(years):
@@ -69,7 +68,8 @@ def movie_viewer(customer):
             print(f"Незважаючи на те, що вам {customer} {years_old}, білетів всеодно нема!")
 
 
-movie_viewer(viewer_year)
+viewer_year = input(colored("Скільки вам років??? ", 'green', attrs=['blink'])) # закоментуйте перед запуском пайтестів
+movie_viewer(viewer_year) # закоментуйте перед запуском пайтестів
 
 
 
