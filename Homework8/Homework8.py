@@ -15,10 +15,6 @@
 # Зробіть все за допомогою функцій! Для кожної функції пропишіть докстрінг або тайпхінтінг.
 # Не забувайте що кожна функція має виконувати тільки одну завдання і про правила написання коду.
 # P.S. Для цієї і для всіх наступних домашок пишіть в функціях докстрінги або хінтінг
-from termcolor import colored
-from tqdm import tqdm
-import time
-
 
 def year_parameterize(years):
     """
@@ -46,8 +42,6 @@ def movie_viewer(customer):
     :type: str
     :return: correct option from print part
     """
-    for i in tqdm(range(5)):
-        time.sleep(0.3)
     years_old = year_parameterize(customer)
     if not customer.isnumeric():
         print("Поле повинно містити тільки цифри!")
@@ -66,9 +60,6 @@ def movie_viewer(customer):
         else:
             print(f"Незважаючи на те, що вам {customer} {years_old}, білетів всеодно нема!")
 
-
-viewer_year = input(colored("Скільки вам років??? ", 'green', attrs=['blink'])) # закоментуйте перед запуском пайтестів
-movie_viewer(viewer_year) # закоментуйте перед запуском пайтестів
 
 
 
