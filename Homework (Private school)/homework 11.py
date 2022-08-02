@@ -11,7 +11,10 @@ class PrivateSchool:
         self.pupils = []
 
     def get_teachers(self):
-        return self.teachers
+        teachers_fullname = []
+        for i in self.teachers:
+            teachers_fullname.append(f"{i.name} {i.surname}")
+        return teachers_fullname
 
     def school_salary_calculate(self):
         full_personal_salary = 0
@@ -38,7 +41,7 @@ class PrivateSchool:
             marks_numbers += len(i.marks)
             for a in i.marks:
                 fully_marks += a
-        avg_mark = fully_marks / marks_numbers
+        avg_mark = fully_marks / marks_numbers if fully_marks != 0 else 0
         return avg_mark
 
 
@@ -65,7 +68,7 @@ class SchoolClass:
         fully_marks = 0
         for i in self.marks:
             fully_marks += i
-        avg_mark = fully_marks / len(self.marks)
+        avg_mark = fully_marks / len(self.marks) if fully_marks != 0 else 0
         return avg_mark
 
 
@@ -90,9 +93,12 @@ class Teacher(Staff):
 
     @staticmethod
     def add_marks(pupil, marks):
-        pupil.marks.append(marks)
-        pupil.school_class.marks.append(marks)
-        return f"The {marks} mark added for the {pupil.name} {pupil.surname}"
+        if pupil.school_class is None:
+            return f"The {pupil.name} {pupil.surname} not included in the class"
+        else:
+            pupil.marks.append(marks)
+            pupil.school_class.marks.append(marks)
+            return f"The {marks} mark added for the {pupil.name} {pupil.surname}"
 
     def get_salary(self):
         return f"The {self.salary} received on the card"
@@ -161,7 +167,7 @@ class Pupil(Staff):
         full_marks = 0
         for i in self.marks:
             full_marks += i
-        avg_mark = full_marks / len(self.marks)
+        avg_mark = full_marks / len(self.marks) if full_marks != 0 else 0
         return avg_mark
 
     def get_salary(self):
