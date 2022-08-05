@@ -184,3 +184,5 @@ pupil_2 = Pupil("Rogelio", "Gibson", 20, school_1)
 pupil_3 = Pupil("Sandra", "Cardenas", 21, school_1)
 cls1 = SchoolClass("11-A", school_1, teacher_1)
 cls2 = SchoolClass("7-B", school_1, teacher_2)
+
+
