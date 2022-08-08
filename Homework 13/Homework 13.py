@@ -1,31 +1,41 @@
 def title(func):
-    def wrapper():
-        print(">" * 35)
+    def wrapper(*args, **kwargs):
         print("CEO Red Bull Inc. Mr. John Bigbull")
-        print(">" * 35)
-        return func()
+        return func(*args, **kwargs)
     return wrapper
 
 
-@title
-def vacation_pattern():
-    input_data = input("Enter type of vacation than you want (Vacation, Sick leave, Day off): ")
-    input_1 = input_data.lower()
-    if input_1 != "vacation" and input_1 != "sick leave" and input_1 != "day off":
-        print("You entered type of vacation incorrectly")
+def vacation_validation():
+    if vacation_type == "vacation" or vacation_type == "sick leave" or vacation_type == "day off":
+        return validation_user_data()
     else:
-        entered_data = input("Enter your Name, Surname, Date from, To date: ")
-        data = entered_data.split()
-        if len(data) != 4:
-            print("You entered incorrect data (You need enter Name, Surname, Date from, To date)")
-        elif input_1 == "Vacation":
-            print(f"Hi John,\nI need the paid vacations from {data[2]} to {data[3]}. \n{data[0]} {data[1]}")
-        elif input_1 == "Sick leave":
-            print(f"Hi John, \nI need the paid sick leave from {data[2]} to {data[3]}.\n{data[0]} {data[1]}")
+        print("You entered type of vacation incorrectly")
+
+
+def validation_user_data():
+    name = input("Enter your Name (example: Johny): ")
+    if name.isnumeric() or len(name) < 1:
+        print("You entered wrong data (example: Johny)")
+    else:
+        surname = input("Enter your Surname (example: Depp): ")
+        if surname.isnumeric() or len(surname) < 1:
+            print("You entered wrong data (example: Depp)")
         else:
-            print(f"Hi John,\nI need the days off from {data[2]} to {data[3]}.\n{data[0]} {data[1]}")
+            date_from = input("Enter start vacation date (example: 10.03): ")
+            date_to = input("Enter finish vacation date (example: 10.03): ")
+            return user_data_receiver(name, surname, date_from, date_to)
 
 
-vacation_pattern()
+@title
+def user_data_receiver(name, surname, date_from, date_to):
+    if vacation_type == "vacation":
+        print(f"Hi John,\nI need the paid vacations from {date_from} to {date_to}. \n{name} {surname}")
+    elif vacation_type == "sick leave":
+        print(f"Hi John, \nI need the paid sick leave from {date_from} to {date_to}.\n{name} {surname}")
+    else:
+        print(f"Hi John,\nI need the days off from {date_from} to {date_to}.\n{name} {surname}")
 
 
+if __name__ == "__main__":
+    vacation_type = input("Enter type of vacation than you want (Vacation, Sick leave, Day off): ").lower()
+    vacation_validation()
