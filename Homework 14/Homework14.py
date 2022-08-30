@@ -72,7 +72,8 @@ class CoffeeMachine:
             change = self.money - (coffee_type.price - discount)
             self.money = 0
             buyer.money += change
-            return f"Done, withdrew is {coffee_type.price - discount} UAH. Discount value is {discount} UAH"
+            return f"Done, withdrew is {coffee_type.price - discount} UAH. Discount value is {discount} UAH \n" \
+                   f"You have leaved {}"
 
 
 class Buyer:
@@ -82,11 +83,11 @@ class Buyer:
         self.money = money
 
     def depositing_money(self, coffee_machine: CoffeeMachine):
-        money_value = input("Enter the money value: ")
+        money_value = input("Enter the money value (example: 100): ")
         try:
             money = int(money_value)
         except ValueError:
-            raise ValueError(f"Entered wrong data ( should be int )")
+            raise ValueError(f"Entered wrong data (should be intagare)")
         else:
             if self.money < money:
                 raise ValueError("Don't have enough funds")
